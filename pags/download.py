@@ -5,7 +5,7 @@ def generate_registro_file():
     with open(file_name, "rb") as template_file:
         template_byte = template_file.read()
 
-        st.download_button(label="Click to Download Template File",
+        st.download_button(label="Clique para baixar o relatório em Excel",
                            data=template_byte,
                            file_name="danos_TESTES.xlsx",
                            mime='application/octet-stream')

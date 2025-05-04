@@ -43,7 +43,6 @@ def adicionar_linha_excel(dados):
 def deletar_linha_excel(data, parcela, planta):
     workbook = openpyxl.load_workbook(arquivo_excel)
     planilha = workbook.active
-
     
     linha_a_deletar = None
     for row in range(2, planilha.max_row + 1):

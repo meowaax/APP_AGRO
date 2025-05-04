@@ -59,7 +59,7 @@ def filter_by_parcela(data, parcela):
 
 def display_data(data, title):
     st.write(f"Exibindo dados {title}")
-    st.dataframe(data)
+    st.dataframe(data, use_container_width=True, hide_index=True)
 
 def display_total_value(data, status):
     total_value = data['FOLHAS'].sum()

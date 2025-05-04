@@ -26,7 +26,7 @@ def adicionar_registro():
 
     danos = get_dano()
     st.markdown("#### Nota de Dano:")
-    dano = st.select_slider("", options=danos)
+    nota_dano = st.select_slider("", options=danos)
 
     st.markdown("#### Altura da planta (cm):")
     altura = st.number_input("", min_value=0.0, step=0.1)
@@ -38,14 +38,33 @@ def adicionar_registro():
     obs = st.text_area("")
 
   # Verificar se todos os campos obrigatórios foram preenchidos
-    if parcela and planta and praga and dano and altura and folhas:
+    if parcela and planta and praga and altura and folhas:
         if st.button("Adicionar"):
-            cadastrar_registro(data, parcela, planta, praga, dano, altura, folhas, obs)
+            cadastrar_registro(
+                data, 
+                parcela, 
+                planta, 
+                praga,
+                nota_dano, 
+                altura, 
+                folhas, 
+                'Nenhuma' if len(obs) == 0 else obs
+            )
     else:
         st.warning("Por favor, preencha todos os campos obrigatórios antes de fazer o registro.")
         
     
-def cadastrar_registro(data, parcela, planta, praga, dano, altura, folhas, obs):
-    adicionar_linha_excel([data, parcela, planta, praga, dano, altura, folhas, obs])
+def cadastrar_registro(data, parcela, planta, praga, nota_dano, altura, folhas, obs):
+    adicionar_linha_excel([
+        data, 
+        parcela, 
+        planta, 
+        praga,
+        'Não' if nota_dano == 0 else 'Sim',
+        nota_dano, 
+        altura, 
+        folhas, 
+        obs
+    ])
     
     st.markdown('### Registro realizado com Sucesso!')
