@@ -2,7 +2,7 @@ import streamlit as st
 from pags.dados import get_parcela, deletar_linha_excel, get_datas, get_planta
 
 def deletar_registro():
-    st.markdown("## Deletar Boleto")
+    st.markdown("## Deletar Registro")
 
     datas = get_datas()
     st.markdown('#### Data do registro:')
